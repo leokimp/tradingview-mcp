@@ -1277,6 +1277,10 @@ def main() -> None:
             mcp.settings.port = args.port
         except Exception:
             pass
+        from mcp.server.transport_security import TransportSecuritySettings
+        mcp.settings.transport_security = TransportSecuritySettings(
+            enable_dns_rebinding_protection=False
+        )
         mcp.run(transport="streamable-http")
 
 
